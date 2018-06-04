@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="nosetests" tests="27" errors="0" failures="0" skip="0"><testcase classname="tests.functional.test_pact.PactTest" name="test_consumer" time="0.177"><system-out><![CDATA[
+
+>==========buffered logs==========
+> test_http (tests.functional.consumer.mcdonald.test_http.HTTPTest) ... ok
+> 
+> ----------------------------------------------------------------------
+> XML: /Users/luyun/projects/pacte/nosetests-ctc.xml
+> ----------------------------------------------------------------------
+> Ran 1 test in 0.011s
+> 
+> OK
+> 
+>=============log end=============
+
+
+
+>==========buffered logs==========
+> runTest (pacte.case_builder.http_case_factory.<locals>.ProviderTest) ... ok
+> 
+> ----------------------------------------------------------------------
+> XML: /Users/luyun/projects/pacte/nosetests-ctp.xml
+> ----------------------------------------------------------------------
+> Ran 1 test in 0.124s
+> 
+> OK
+> 
+>=============log end=============
+
+]]></system-out></testcase><testcase classname="tests.unit.provider.test_case_builder.CaseBuilderTest" name="test_http_testcase_builder" time="0.010"><system-err><![CDATA[.
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+OK
+]]></system-err></testcase><testcase classname="tests.unit.provider.test_case_builder.CaseBuilderTest" name="test_http_testcase_builder_of_get_json" time="0.007"><system-err><![CDATA[.
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+]]></system-err></testcase><testcase classname="tests.unit.provider.test_case_builder.CaseBuilderTest" name="test_http_testcase_builder_of_headers" time="0.005"><system-err><![CDATA[.
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+]]></system-err></testcase><testcase classname="tests.unit.provider.test_case_builder.CaseBuilderTest" name="test_http_testcase_builder_of_post_json" time="0.006"><system-err><![CDATA[.
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+]]></system-err></testcase><testcase classname="tests.unit.utils.test_json.JsonDatetimeTest" name="test_datetime_decoder" time="0.001"></testcase><testcase classname="tests.unit.utils.test_json.JsonDatetimeTest" name="test_datetime_encoder" time="0.001"></testcase><testcase classname="tests.unit.test_contract.TestContract" name="test_add_interaction" time="0.001"></testcase><testcase classname="tests.unit.test_contract.TestContract" name="test_from_dict" time="0.000"></testcase><testcase classname="tests.unit.test_contract.TestContract" name="test_mock_service_multi_interactions_serialize" time="0.000"></testcase><testcase classname="tests.unit.test_contract.TestContract" name="test_mock_service_serialize_json" time="0.000"></testcase><testcase classname="tests.unit.test_contract.TestContract" name="test_mock_service_serialize_text" time="0.000"></testcase><testcase classname="tests.unit.test_contract_factory.TestContractFactory" name="test_register" time="0.000"></testcase><testcase classname="tests.unit.test_contract_factory.TestContractFactory" name="test_serialize" time="0.005"></testcase><testcase classname="tests.unit.test_interaction.TestInteraction" name="test_equals" time="0.000"></testcase><testcase classname="tests.unit.test_interaction.TestInteraction" name="test_from_dict" time="0.000"></testcase><testcase classname="tests.unit.test_interaction.TestInteraction" name="test_to_dict" time="0.000"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_base" time="0.005"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_multiple_services" time="0.007"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_functional_json" time="0.004"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_functional_str" time="0.003"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_get_querystr" time="0.008"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_multi_functional" time="0.005"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_multi_interactions_requests" time="0.014"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_mock_service_post_querystr" time="0.008"></testcase><testcase classname="tests.unit.test_mockings.TestMockServices" name="test_multi_interactions" time="0.008"></testcase><testcase classname="tests.unit.test_states.StateCollectorTest" name="test_collect" time="0.006"></testcase></testsuite>
