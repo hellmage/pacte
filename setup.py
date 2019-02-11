@@ -24,8 +24,8 @@ setup(
     classifiers=[],
     install_requires=[
         'flask>=0.12',
-        'requests-mock==1.4.0',
-        'requests==2.18.1',
+        'requests-mock',
+        'requests>2.19.1',
         'simplejson==3.6.5',
         'click'
     ],
