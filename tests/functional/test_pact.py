@@ -38,12 +38,12 @@ class PactTest(ut.TestCase):
     def test_consumer(self):
         runner = CliRunner()
 
-        # Run consumer tests, generate contract of mcdonald for provider "chicken-farm"
-        result = runner.invoke(consumer, ['--contract', 'tests/functional/consumer/mcdonald/'],
+        # Run consumer tests, generate contract of hotpot for provider "chicken-farm"
+        result = runner.invoke(consumer, ['--contract', 'tests/functional/consumer/restaurant/'],
                                catch_exceptions=False)
         self.assertTrue(os.path.exists(CONSUMER_TEST_RESULT))
         shutil.copy(os.path.join(PACT_CONSUMER, 'chicken-farm.json'),
-                    os.path.join(PACT_PROVIDER, 'mcdonald.json'))
+                    os.path.join(PACT_PROVIDER, 'hotpot.json'))
         self._print_result(result)
 
         # Run provider test

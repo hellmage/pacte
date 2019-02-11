@@ -29,27 +29,27 @@ a contract factory to initiate a contract and add interactions.
 For example, you have some client side code like this:
 
 ```python
-# tests/functional/consumer/mcdonald/mcdonald.py
+# tests/functional/consumer/restaurant/hotpot.py
 
-def mcdonald():
-    response = requests.get('http://www.chicken-farm.com/buy-chicken?n=1000')
+def hotpot():
+    response = requests.get('http://chicken-farm/buy-chicken?n=1000')
     return 'buy 1k chicken: %s' % response.text
 ```
 
 The consumer side contract test case will look like this:
 
 ```python
-# tests/functional/consumer/mcdonald/test_http.py
+# tests/functional/consumer/restaurant/test_http.py
 
 class HTTPTest(unittest.TestCase):
 
     def test_http(self):
-        contract = contract_factory.register('chicken-farm', 'McDonald')
+        contract = contract_factory.register('chicken-farm', 'HotPot')
         contract.given("10k-healthy-chickens").upon_receiving("one-thousand-buy-request").with_request(
             'GET', '/buy-chicken', query='n=1000'
         ).will_respond_with(200, body='success')
-        with MockServices(MockAPI(contract, scheme='http', domain='www.chicken-farm.com')):
-            result = mcdonald()
+        with MockServices(MockAPI(contract, scheme='http', domain='chicken-farm')):
+            result = hotpot()
             self.assertEqual('buy 1k chicken: success', result)
 ```
 

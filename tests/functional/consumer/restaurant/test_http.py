@@ -8,16 +8,16 @@ import unittest as ut
 
 from pacte import contract_factory
 from pacte.mockings import MockServices, MockAPI
-from tests.functional.consumer.mcdonald.mcdonald import mcdonald
+from tests.functional.consumer.restaurant.hotpot import hotpot
 
 
 class HTTPTest(ut.TestCase):
 
     def test_http(self):
-        contract = contract_factory.register('chicken-farm', 'McDonald')
+        contract = contract_factory.register('chicken-farm', 'HotPot')
         contract.given("10k-healthy-chickens").upon_receiving("one-thousand-buy-request").with_request(
             'GET', '/buy-chicken', query='n=1000'
         ).will_respond_with(200, body='success')
-        with MockServices(MockAPI(contract, scheme='http', domain='www.chicken-farm.com')):
-            result = mcdonald()
+        with MockServices(MockAPI(contract, scheme='http', domain='chicken-farm')):
+            result = hotpot()
             self.assertEqual('buy 1k chicken: success', result)
