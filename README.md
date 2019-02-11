@@ -2,11 +2,9 @@
 
 [![Build Status](https://travis-ci.org/luyun-aa/pacte.svg?branch=master)](https://travis-ci.org/luyun-aa/pacte)
 
-This is an AppAnnie implementation of [Pact](pact.io). For now, we have
-only implemented pact specification version 1.
+This is an App Annie implementation of [Pact](pact.io). For now, we have only implemented pact specification version 1.
 
-`pacte` is a consumer driven contract testing library that allows mocking
-of responses in the consumer codebase, and verification of the
+`pacte` is a consumer driven contract testing library that allows mocking of responses in the consumer codebase, and verification of the
 interaction in the provider codebase.
 
 `pacte` is based on [requests](https://github.com/kennethreitz/requests),
@@ -23,8 +21,7 @@ pip install pacte
 
 ## Consumer Tests
 
-Consumer test cases are just normal `unittest.TestCase`. `pacte` provides
-a contract factory to initiate a contract and add interactions.
+Consumer test cases are just normal `unittest.TestCase`. `pacte` provides a contract factory to initiate a contract and add interactions.
 
 For example, you have some client side code like this:
 
@@ -126,17 +123,11 @@ class StateHealthyChickens(unittest.TestCase):
         pass
 ```
 
-Please beware that no test method in state class is necessary. Interactions
-defined in the contract provided by consumer side will be transformed into
-test method automatically. The purpose of state class is to implement data
-preparation in the `setUp` and `tearDown` method. You can insert records
-into database, or mock downstream microservices, or do anything necessary
-to meet the request and response from consumer side contract.
+Please beware that no test method in state class is necessary. Interactions defined in the contract provided by consumer side will be transformed into test method automatically. The purpose of state class is to implement data preparation in the `setUp` and `tearDown` method. You can insert records into database, or mock downstream microservices, or do anything necessary to meet the request and response from consumer side contract.
 
 ### How to run
 
-`pacte` also provides a wrapper of `nose` to run the provider side contract
-tests:
+`pacte` also provides a wrapper of `nose` to run the provider side contract tests:
 
 ```
 $ pact-provider --help
@@ -149,9 +140,7 @@ Options:
   --help           Show this message and exit.
 ```
 
-The `pact-provider` command will load all state classes from the `statedir`
-and dynamically generate test cases from the provided contract. The generated
-test cases will also be run by `nose`.
+The `pact-provider` command will load all state classes from the `statedir` and dynamically generate test cases from the provided contract. The generated test cases will also be run by `nose`.
 
 ## Development
 
