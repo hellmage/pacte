@@ -11,3 +11,6 @@ coverage.xml
 .idea/
 .cache/
 pact/
+__pycache__
+nosetests*.xml
+.python-version
