@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/luyun-aa/pacte.svg?branch=master)](https://travis-ci.org/luyun-aa/pacte)
 
-This is an App Annie implementation of [Pact](pact.io). For now, we have only implemented pact specification version 1.
+This is an [App Annie](www.appannie.com) implementation of [Pact](pact.io). For now, we have only implemented pact specification version 1.
 
 `pacte` is a consumer driven contract testing library that allows mocking of responses in the consumer codebase, and verification of the
 interaction in the provider codebase.
