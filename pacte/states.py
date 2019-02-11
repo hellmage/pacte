@@ -18,12 +18,12 @@ def _collect_state_files(state_dir):
         else:
             logger.debug('Ignore file: %s', state_dir)
     else:
-        dirpath, dirnames, filenames = list(os.walk(state_dir))[0]
-        for filename in filenames:
-            if filename.startswith('state_') and filename.endswith('.py'):
-                yield dirpath, filename
-            else:
-                logger.debug('Ignore file: %s', os.path.join(dirpath, filename))
+        for dirpath, dirnames, filenames in os.walk(state_dir):
+            for filename in filenames:
+                if filename.startswith('state_') and filename.endswith('.py'):
+                    yield dirpath, filename
+                else:
+                    logger.debug('Ignore file: %s', os.path.join(dirpath, filename))
 
 
 def _import_state_module(dirpath, filename):

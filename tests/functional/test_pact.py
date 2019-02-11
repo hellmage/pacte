@@ -40,17 +40,19 @@ class PactTest(ut.TestCase):
 
         # Run consumer tests, generate contract of hotpot for provider "chicken-farm"
         result = runner.invoke(consumer, ['--contract', 'tests/functional/consumer/restaurant/'],
-                               catch_exceptions=False)
+                               catch_exceptions=True)
         self.assertTrue(os.path.exists(CONSUMER_TEST_RESULT))
         shutil.copy(os.path.join(PACT_CONSUMER, 'chicken-farm.json'),
                     os.path.join(PACT_PROVIDER, 'hotpot.json'))
         self._print_result(result)
+        self.assertEqual(0, result.exit_code, "Consumer test failed")
 
         # Run provider test
         result = runner.invoke(provider, [
             '--statedir', 'tests/functional/provider/states/',
             '--app', 'tests.functional.provider.app.app',
             PACT_PROVIDER
-        ], catch_exceptions=False)
+        ], catch_exceptions=True)
         self.assertTrue(os.path.exists(PROVIDER_TEST_RESULT))
         self._print_result(result)
+        self.assertEqual(0, result.exit_code, "Provider test failed")

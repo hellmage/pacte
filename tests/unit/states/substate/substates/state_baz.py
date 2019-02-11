@@ -3,11 +3,11 @@
 from unittest import TestCase
 
 
-class StateBaz(TestCase):
+class StateSubBaz(TestCase):
     """
-    This class will not be collected because the filename does not start with "state_".
+    This class in sub directory will also be collected
     """
-    state = 'baz'
+    state = 'subbaz'
 
     def setup(self):
         pass

@@ -24,6 +24,12 @@ PROVIDER_TEST_RESULT = 'nosetests-ctp.xml'
 CONSUMER_TEST_RESULT = 'nosetests-ctc.xml'
 
 
+def _exit(successful):
+    if successful:
+        sys.exit(0)
+    sys.exit(1)
+
+
 def _render_http_testsuite(app, contracts, states):
     provider_testcases = []
     for contract in contracts:
@@ -31,7 +37,7 @@ def _render_http_testsuite(app, contracts, states):
             state_cls = states.get(interaction.provider_state)
             if not state_cls:
                 raise PacteServiceException('State "%s" is not prepared' % interaction.provider_state)
-            provider_testcases.append(http_case_factory(app, state_cls, interaction)())
+            provider_testcases.append(http_case_factory(app, state_cls, interaction, contract.consumer)())
     return provider_testcases
 
 
@@ -69,10 +75,11 @@ def provider(statedir, app, contract):
     # It's important to provide all test cases in a list so that nosetests can
     # generate a proper xunit result summary file.
     test_cases = _render_http_testsuite(app, contracts, states)
-    nose.run(
+    successful = nose.run(
         argv=[__file__, '-sv', '--logging-level=INFO', '--with-xunit', '--xunit-file=' + PROVIDER_TEST_RESULT],
         suite=test_cases,
     )
+    _exit(successful)
 
 
 @click.command()
@@ -93,5 +100,6 @@ def consumer(pact, contract):
         logger.warn('Contract file %s does not exist', contract)
         sys.exit()  # exit with success, to be compatible with services with no provider state prepared
     contract_factory.reset_factory(pact)
-    nose.run(argv=[__file__, '-sv', '--with-xunit', '--xunit-file=' + CONSUMER_TEST_RESULT, contract])
+    successful = nose.run(argv=[__file__, '-sv', '--with-xunit', '--xunit-file=' + CONSUMER_TEST_RESULT, contract])
     contract_factory.serialize(pact)
+    _exit(successful)

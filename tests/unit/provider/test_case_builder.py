@@ -12,10 +12,6 @@ class State(TestCase):
     pass
 
 
-def check_datetime_arg_parser():
-    return
-
-
 class CaseBuilderTest(TestCase):
 
     def test_http_testcase_builder(self):
@@ -35,7 +31,7 @@ class CaseBuilderTest(TestCase):
                 }
             }
         })
-        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction)
+        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction, 'foo-consumer')
         self.assertEqual('AHelloToTheWorldHTTPTest', testcase_cls.__name__)
         self.assertTrue(nose.run(argv=[__file__], suite=[testcase_cls()]))
 
@@ -57,7 +53,7 @@ class CaseBuilderTest(TestCase):
                 }
             }
         })
-        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction)
+        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction, 'foo-consumer')
         self.assertEqual('AHelloToGetJsonHTTPTest', testcase_cls.__name__)
         self.assertTrue(nose.run(argv=[__file__], suite=[testcase_cls()]))
 
@@ -91,7 +87,7 @@ class CaseBuilderTest(TestCase):
                 }
             }
         })
-        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction)
+        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction, 'foo-consumer')
         self.assertEqual('AHelloToPostJsonHTTPTest', testcase_cls.__name__)
         self.assertTrue(nose.run(argv=[__file__], suite=[testcase_cls()]))
 
@@ -114,6 +110,6 @@ class CaseBuilderTest(TestCase):
                 }
             }
         })
-        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction)
+        testcase_cls = http_case_factory('tests.unit.provider.mini_app.app', State, interaction, 'foo-consumer')
         self.assertEqual('PingPongHTTPTest', testcase_cls.__name__)
         self.assertTrue(nose.run(argv=[__file__], suite=[testcase_cls()]))

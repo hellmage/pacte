@@ -17,7 +17,7 @@ def _description_to_test_class_name(desc):
     ).replace(' ', '')
 
 
-def http_case_factory(app, state_cls, interaction):
+def http_case_factory(app, state_cls, interaction, consumer_name):
 
     class ProviderTest(state_cls):
         maxDiff = None
@@ -36,6 +36,7 @@ def http_case_factory(app, state_cls, interaction):
                     raise self.failureException('Bad header: %s=%s' % (key, val))
 
         def runTest(self):
+            logger.info('Run test from consumer %s (%s)', consumer_name, interaction.description)
             request = interaction.request
             response = interaction.response
             app_instance = self._import_application(app)
